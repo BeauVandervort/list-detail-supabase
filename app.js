@@ -1,11 +1,14 @@
-/* Imports */
+import { getCats } from './fetch-utils.js';
+import { renderCatCard } from './render-utils.js';
 
-/* Get DOM Elements */
+const catListContainer = document.getElementById('cat-list-container');
 
-/* State */
+window.addEventListener('load', async () => {
+    const cats = await getCats();
 
-/* Events */
+    for (let cat of cats) {
+        const catEl = renderCatCard(cat);
 
-/* Display Functions */
-
-// (don't forget to call any display functions you want to run on page load!)
+        catListContainer.append(catEl);
+    }
+});
